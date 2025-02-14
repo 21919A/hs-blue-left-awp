@@ -28,58 +28,28 @@ def autonomous_function():
 
     # Then try resetting to GPS if GPS sensor is installed and reports high quality
     reset_robot_position_and_heading_to_gps()
-    
-    # pid_driver.drive(300)
 
+    trigger_mover.move(Position(500, -1500), REVERSE)
 
-    trigger_driver.drive(-1000)
-    trigger_turner.turn(30, FRAME_HEADING_RELATIVE)
-    trigger_driver.drive(-600)
+    trigger_mover.move(Position(-20, -1200), REVERSE)
+
     clamp.set(True)
-    trigger_turner.turn(-30, FRAME_HEADING_RELATIVE)
+    trigger_turner.turn(90, FRAME_ABSOLUTE)
     intake.spin_forward()
-    trigger_driver.drive(800)
-    trigger_turner.turn(-70, FRAME_HEADING_RELATIVE)
+
+    trigger_mover.move(Position(780, -1200))
+
+    trigger_turner.turn(20, FRAME_ABSOLUTE)
     reset_robot_position_and_heading_to_gps()
     intake_retract.set(True)
-    trigger_driver.drive(1250)
-    trigger_turner.turn(144, FRAME_HEADING_RELATIVE)
+
+    trigger_mover.move(Position(1208, -25))
+
+    trigger_turner.turn(164, FRAME_ABSOLUTE)
     intake_retract.set(False)
     reset_robot_position_and_heading_to_gps()
-    trigger_driver.drive(1700)
 
-    # robot_position.reset(Position(-1500, -600))
-    # inertial.set_heading(-90)
-
-    # # Then try resetting to GPS if GPS sensor is installed and reports high quality
-    # reset_robot_position_and_heading_to_gps()
-
-    # trigger_driver.drive(-1000)
-
-    # clamp.set(True)
-    # intake.spin_forward()
-
-    # wait(1000, MSEC)
-    # reset_robot_position_and_heading_to_gps()
-
-    # trigger_turner.turn(-40, FRAME_HEADING_RELATIVE)
-    # intake_retract.set(True)
-    # trigger_driver.drive(635)
-    # intake_retract.set(False)
-    # wait(50, MSEC)
-    # trigger_turner.turn(148, FRAME_HEADING_RELATIVE)
-
-    # wait(100, MSEC)
-    # reset_robot_position_and_heading_to_gps()
-
-    # trigger_driver.drive(800)
-    # trigger_turner.turn(-40, FRAME_HEADING_RELATIVE)
-    # wait(50, MSEC)
-    # # intake.stop()
-
-    # # trigger_driver.drive(-780)
-    # wait(100, MSEC)
-    # reset_robot_position_and_heading_to_gps()
+    trigger_mover.move(Position(1676, -1660))
 
     log(("Competition", "competition"), "autonomous_end")
 
