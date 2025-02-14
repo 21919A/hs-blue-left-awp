@@ -51,6 +51,9 @@ def autonomous_function():
 
     trigger_mover.move(Position(1676, -1660))
 
+    wait(1000, MSEC)
+    reset_robot_position_and_heading_to_gps()
+
     log(("Competition", "competition"), "autonomous_end")
 
 
