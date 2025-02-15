@@ -26,14 +26,15 @@ def autonomous_function():
     # robot_position.reset(Position(1350, -600)) # use this for 2-ring
     robot_position.reset(Position(1500, 300)) # use this for 3-ring
     # inertial.set_heading(90) # use this for 2-ring
-    inertial.set_heading(180) # use this for 3-ring
+    inertial.set_heading(0) # use this for 3-ring
 
     # Use this for 3-ring
     reset_robot_position_and_heading_to_gps()
-    trigger_driver.drive(300)
-    trigger_turner.turn(-90, FRAME_ABSOLUTE)
+    trigger_driver.drive(-300)
+    trigger_turner.turn(270, FRAME_ABSOLUTE)
     slow_trigger_driver.drive(-150)
     intake.spin_forward()
+    wait(1000, MSEC)
 
     trigger_driver.drive(150)
     trigger_mover.move(Position(1500, 600))
