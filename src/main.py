@@ -23,36 +23,29 @@ def autonomous_function():
 
     log(("Competition", "competition"), "autonomous_begin")
 
-    robot_position.reset(Position(1500, -1500))
-    inertial.set_heading(90)
+    # robot_position.reset(Position(1350, -600)) # use this for 2-ring
+    robot_position.reset(Position(1500, 300)) # use this for 3-ring
+    # inertial.set_heading(90) # use this for 2-ring
+    inertial.set_heading(180) # use this for 3-ring
 
-    # Then try resetting to GPS if GPS sensor is installed and reports high quality
+    # Use this for 3-ring
     reset_robot_position_and_heading_to_gps()
-
-    trigger_mover.move(Position(500, -1500), REVERSE)
-
-    trigger_mover.move(Position(-20, -1200), REVERSE)
-
-    clamp.set(True)
-    trigger_turner.turn(90, FRAME_ABSOLUTE)
+    trigger_driver.drive(300)
+    trigger_turner.turn(-90, FRAME_ABSOLUTE)
+    slow_trigger_driver.drive(-150)
     intake.spin_forward()
 
-    trigger_mover.move(Position(780, -1200))
+    trigger_driver.drive(150)
+    trigger_mover.move(Position(1500, 600))
+    slow_trigger_mover.move(Position(600, 600), REVERSE)
+    clamp.set(True)
 
-    trigger_turner.turn(20, FRAME_ABSOLUTE)
-    reset_robot_position_and_heading_to_gps()
-    intake_retract.set(True)
+    trigger_mover.move(Position(600, 1200))
 
-    trigger_mover.move(Position(1208, -25))
 
-    trigger_turner.turn(164, FRAME_ABSOLUTE)
-    intake_retract.set(False)
-    reset_robot_position_and_heading_to_gps()
-
-    trigger_mover.move(Position(1676, -1660))
-
-    wait(1000, MSEC)
-    reset_robot_position_and_heading_to_gps()
+    trigger_turner.turn(200, FRAME_ABSOLUTE)
+    trigger_driver.drive(800)
+    clamp.set(False)
 
     log(("Competition", "competition"), "autonomous_end")
 
